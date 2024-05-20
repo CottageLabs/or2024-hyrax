@@ -1,0 +1,132 @@
+version: '3'
+
+volumes:
+  db:
+  solr:
+  redis:
+  app:
+  file_uploads:
+  derivatives:
+  cache:
+  branding:
+
+networks:
+  internal:
+
+services:
+  solr:
+    image: solr:8
+    env_file:
+      - .env
+    environment:
+      - OOM=script
+    command:
+      - sh
+      - "-c"
+      - "precreate-core ${SOLR_TEST_CORE} /opt/solr/solr_conf; solr-precreate ${SOLR_CORE} /opt/solr/solr_conf"
+    networks:
+      internal:
+    expose:
+      - 8983
+    ports:
+      - 8983:8983
+    volumes:
+      - solr:/var/solr
+      - ./hyrax/solr/conf:/opt/solr/solr_conf
+    healthcheck:
+      test: ["CMD-SHELL", "wget -O /dev/null http://localhost:8983/solr/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  appdb:
+    image: postgres:15-alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB_APP}
+    networks:
+      internal:
+    expose:
+      - 5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "POSTGRES_PASSWORD=${POSTGRES_PASSWORD} pg_isready -U ${POSTGRES_USER} -h localhost -d ${POSTGRES_DB_APP}"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  app: &app
+    build:
+      context: hyrax
+      args:
+        RAILS_ENV: ${RAILS_ENV}
+        UPLOADS_PATH: ${UPLOADS_PATH}
+        DERIVATIVES_PATH: ${DERIVATIVES_PATH}
+        CACHE_PATH: ${CACHE_PATH}
+        FITS_PATH: ${FITS_PATH}
+        FITS_VERSION: ${FITS_VERSION}
+    env_file:
+      - .env
+    networks:
+      internal:
+
+  web:
+    <<: *app
+    environment:
+      - VIRTUAL_HOST=or2024.docker
+      - VIRTUAL_PORT=3000
+      - RAILS_FORCE_SSL=false
+    command: bash -c "/bin/docker-entrypoint.sh"
+    depends_on:
+      - appdb
+      - solr
+      - redis
+    networks:
+      internal:
+        aliases:
+          - web
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - file_uploads:${UPLOADS_PATH}
+      - derivatives:${DERIVATIVES_PATH}
+      - cache:${CACHE_PATH}
+      - branding:${BRAND_PATH}
+      - ${HOST_APP_DATA_PATH:-/data/}:/data/data
+      - ./hyrax:/data:cached
+
+  workers:
+    <<: *app
+    command: bash -c "bundle install && bundle exec sidekiq"
+    depends_on:
+      - appdb
+      - solr
+      - redis
+    volumes:
+      - file_uploads:${UPLOADS_PATH}
+      - derivatives:${DERIVATIVES_PATH}
+      - cache:${CACHE_PATH}
+      - branding:${BRAND_PATH}
+      - ${HOST_APP_DATA_PATH:-/data/}:/data/data
+      - ./hyrax:/data:cached
+
+  redis:
+    image: redis:6
+    command: redis-server --appendonly yes
+    networks:
+      internal:
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - redis:/data
