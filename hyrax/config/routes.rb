@@ -3,7 +3,12 @@ Rails.application.routes.draw do
         mount BrowseEverything::Engine => '/browse'
 
   mount Blacklight::Engine => '/'
-  
+
+  authenticate :user, lambda { |u| u.admin? } do
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
