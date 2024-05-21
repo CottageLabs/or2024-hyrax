@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Hyrax.config do |config|
+  # Injected via `rails g hyrax:work_resource Monograph`
+  config.register_curation_concern :monograph
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
@@ -74,7 +76,7 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  #config.fits_path = "fits.sh"
+  config.fits_path = ENV['FITS_PATH'] || "/fits/fits-1.5.5/fits.sh"
 
   # Path to the file derivatives creation tool
   # config.libreoffice_path = "soffice"
