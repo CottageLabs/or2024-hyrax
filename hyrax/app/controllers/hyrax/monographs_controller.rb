@@ -9,7 +9,7 @@ module Hyrax
     include Hyrax::WorksControllerBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = ::Monograph
-
+    self.show_presenter = Hyrax::MonographPresenter
     # Use a Valkyrie aware form service to generate Valkyrie::ChangeSet style
     # forms.
     self.work_form_service = Hyrax::FormFactory.new

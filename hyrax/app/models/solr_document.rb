@@ -27,4 +27,32 @@ class SolrDocument
   # Do content negotiation for AF models. 
 
   use_extension( Hydra::ContentNegotiation )
+
+  def record_info
+    self['record_info_tesim']
+  end
+
+  def place_of_publication
+    self['place_of_publication_tesim']
+  end
+
+  def genre
+    self['genre_tesim']
+  end
+
+  def series_title
+    self['series_title_tesim']
+  end
+
+  def target_audience
+    self['target_audience_tesim']
+  end
+
+  def table_of_contents
+    self['table_of_contents_tesim']
+  end
+
+  def date_of_issuance
+    self['date_of_issuance_tesim']
+  end
 end
