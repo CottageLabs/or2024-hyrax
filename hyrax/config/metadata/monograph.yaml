@@ -39,27 +39,39 @@ attributes:
     form:
       required: false
       primary: true
+    index_keys:
+      - "place_of_publication_tesim"
     predicate: http://hyrax-example.com/place_of_publication
   genre:
     type: string
     form:
       primary: true
+    index_keys:
+      - "genre_tesim"
     predicate: http://hyrax-example.com/genre
   series_title:
     type: string
     form:
       primary: false
+    index_keys:
+      - "series_title_tesim"
     predicate: http://hyrax-example.com/series_title
   target_audience:
     type: string
     form:
       multiple: true
+    index_keys:
+      - "target_audience_tesim"
     predicate: http://hyrax-example.com/target_audience
   table_of_contents:
     type: string
     form:
       multiple: false
+    index_keys:
+      - "table_of_contents_tesim"
     predicate: http://hyrax-example.com/table_of_contents
   date_of_issuance:
     type: string
+    index_keys:
+      - "date_of_issuance_tesim"
     predicate: http://hyrax-example.com/date_of_issuance
