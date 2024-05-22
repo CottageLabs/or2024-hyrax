@@ -83,6 +83,7 @@ services:
       - appdb
       - solr
       - redis
+      - fits
     networks:
       internal:
         aliases:
@@ -106,6 +107,7 @@ services:
       - appdb
       - solr
       - redis
+      - fits
     volumes:
       - file_uploads:${UPLOADS_PATH}
       - derivatives:${DERIVATIVES_PATH}
@@ -130,3 +132,10 @@ services:
       retries: 3
     volumes:
       - redis:/data
+  fits:
+    image: ghcr.io/samvera/fitsservlet:1.6.0
+    ports:
+      - 8080
+    networks:
+      internal:
+
