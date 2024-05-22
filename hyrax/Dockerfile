@@ -21,7 +21,8 @@ COPY policy.xml /etc/ImageMagick-7/policy.xml
 
 RUN mkdir -p /fits/fits-$FITS_VERSION \
     && curl --fail --location "https://github.com/harvard-lts/fits/releases/download/$FITS_VERSION/fits-$FITS_VERSION.zip" | bsdtar --extract --directory /fits/fits-$FITS_VERSION \
-    && chmod +x "/fits/fits-$FITS_VERSION/fits.sh" "/fits/fits-$FITS_VERSION/fits-env.sh" "/fits/fits-$FITS_VERSION/fits-ngserver.sh"
+    && chmod +x "/fits/fits-$FITS_VERSION/fits.sh" "/fits/fits-$FITS_VERSION/fits-env.sh" "/fits/fits-$FITS_VERSION/fits-ngserver.sh" \
+    && sed -i 's/\(<tool.*TikaTool.*>\)/<!--\1-->/' "/fits/fits-$FITS_VERSION/xml/fits.xml"
 
 # copy gemfiles to production folder
 COPY Gemfile Gemfile.lock $APP_PRODUCTION
