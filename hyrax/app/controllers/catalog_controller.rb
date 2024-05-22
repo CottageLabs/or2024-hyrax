@@ -62,7 +62,14 @@ class CatalogController < ApplicationController
     config.add_facet_field "publisher_sim", limit: 5
     config.add_facet_field "file_format_sim", limit: 5
     config.add_facet_field "member_of_collection_ids_ssim", limit: 5, label: 'Collections', helper_method: :collection_title_by_id
-
+    # Monograph search fields
+    config.add_facet_field "record_info_sim", limit: 5
+    config.add_facet_field "place_of_publication_sim", limit: 5
+    config.add_facet_field "genre_sim", limit: 5
+    config.add_facet_field "series_title_sim", limit: 5
+    config.add_facet_field "target_audience_sim", limit: 5
+    config.add_facet_field "table_of_contents_sim", limit: 5
+    config.add_facet_field "date_of_issuance_sim", limit: 5
     # The generic_type and depositor are not displayed on the facet list
     # They are used to give a label to the filters that comes from the user profile
     config.add_facet_field "generic_type_sim", if: false

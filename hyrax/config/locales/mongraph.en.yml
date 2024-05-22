@@ -1,0 +1,28 @@
+en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          record_info_sim:  Record Info
+          place_of_publication_sim: Place Of Publication
+          genre_sim: Genre
+          series_title_sim: Series Title
+          target_audience_sim: Target Audience
+          table_of_contents_sim: Table Of Contents
+          date_of_issuance_sim: Date Of Issuance
+        index:
+          record_info_tesim:  Record Info
+          place_of_publication_tesim: Place Of Publication
+          genre_tesim: Genre
+          series_title_tesim: Series Title
+          target_audience_tesim: Target Audience
+          table_of_contents_tesim: Table Of Contents
+          date_of_issuance_tesim: Date Of Issuance
+        show:
+          record_info_tesim:  Record Info
+          place_of_publication_tesim: Place Of Publication
+          genre_tesim: Genre
+          series_title_tesim: Series Title
+          target_audience_tesim: Target Audience
+          table_of_contents_tesim: Table Of Contents
+          date_of_issuance_tesim: Date Of Issuance
