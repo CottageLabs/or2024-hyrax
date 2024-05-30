@@ -1,0 +1,10 @@
+en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          complex_person_sim:  Person
+        index:
+          complex_person_tesim:  Person
+        show:
+          complex_person_tesim:  Person

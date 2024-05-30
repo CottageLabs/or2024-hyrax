@@ -73,6 +73,7 @@ group :development, :test do
 end
 gem 'openseadragon', '>= 0.2.0'
 gem 'riiif', '~> 2.1'
+gem 'rinku'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.8'

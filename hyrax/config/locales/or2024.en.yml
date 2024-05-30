@@ -1,0 +1,5 @@
+en:
+  or2024:
+    fields:
+      first_name: Given Name
+      last_name: Family name
