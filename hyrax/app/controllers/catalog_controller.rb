@@ -70,6 +70,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "target_audience_sim", limit: 5
     config.add_facet_field "table_of_contents_sim", limit: 5
     config.add_facet_field "date_of_issuance_sim", limit: 5
+    config.add_facet_field "complex_person_sim", limit: 5
     # The generic_type and depositor are not displayed on the facet list
     # They are used to give a label to the filters that comes from the user profile
     config.add_facet_field "generic_type_sim", if: false

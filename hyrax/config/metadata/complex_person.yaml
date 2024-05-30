@@ -1,0 +1,31 @@
+attributes:
+  first_name:
+    type: string
+    form:
+      required: false
+      primary: true
+    predicate: http://hyrax-example.com/first_name
+  last_name:
+    type: integer
+    form:
+      required: false
+      primary: true
+    predicate: http://hyrax-example.com/last_name
+  role:
+    type: integer
+    form:
+      required: false
+      primary: true
+    predicate: http://hyrax-example.com/role
+  orcid:
+    type: integer
+    form:
+      required: false
+      primary: true
+    predicate: http://hyrax-example.com/orcid
+  affiliation:
+    type: integer
+    form:
+      required: false
+      primary: true
+    predicate: http://hyrax-example.com/affiliation

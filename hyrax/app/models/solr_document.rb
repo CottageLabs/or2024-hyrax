@@ -55,4 +55,8 @@ class SolrDocument
   def date_of_issuance
     self['date_of_issuance_tesim']
   end
+
+  def complex_person
+    self['complex_person_ssm']
+  end
 end
