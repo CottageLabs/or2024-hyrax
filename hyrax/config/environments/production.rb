@@ -117,4 +117,19 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  if ENV["RAILS_FORCE_SSL"].present? && (ENV["RAILS_FORCE_SSL"].to_s.downcase == 'false') then
+    config.force_ssl = false
+    Rails.application.routes.default_url_options = \
+      Hyrax::Engine.routes.default_url_options = \
+      {protocol: 'http', host: ENV['APP_HOST']}
+    config.application_url = "http://#{ENV['APP_HOST']}"
+  else
+    config.force_ssl = true #default if nothing specified is more secure.
+    Rails.application.routes.default_url_options = \
+      Hyrax::Engine.routes.default_url_options = \
+      {protocol: 'https', host: ENV['APP_HOST']}
+    config.application_url = "https://#{ENV['APP_HOST']}"
+  end
 end
