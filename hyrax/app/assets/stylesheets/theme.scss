@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "bootstrap-default-overrides";
+
+#masthead {
+  min-height: 80px;
+  .institution_name {
+    font-size: 34px;
+  }
+}
+
+.dashboard {
+  .search-box{
+    margin-top: 24px;
+  }
+}
