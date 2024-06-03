@@ -76,6 +76,14 @@ attributes:
     index_keys:
       - "alternative_title_tesim"
     predicate: http://purl.org/dc/terms/alternative
+  source:
+    type: string
+    multiple: true
+    form:
+      primary: false
+    index_keys:
+      - "source_tesim"
+    predicate: http://purl.org/dc/terms/source
   subject:
     type: string
     multiple: true
