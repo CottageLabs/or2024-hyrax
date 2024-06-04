@@ -1,53 +1,62 @@
 @import "bootstrap";
 @import "bootstrap-default-overrides";
 
-#masthead {
-  min-height: 80px;
-  .institution_name {
-    font-size: 34px;
-    color: #605e5e;
-    font-weight: 600;
+body {
+  background-color: #f6f6f6;
+  #masthead {
+    min-height: 80px;
+    border-bottom: 3px solid;
+    border-color: #940101;
+    .institution_name {
+      font-size: 34px;
+      color: #605e5e;
+      font-weight: 600;
+    }
+    .navbar-brand > img {
+      max-height: 45px;
+    }
   }
-  .navbar-brand > img {
-    max-height: 45px;
+
+  .navbar.navbar-expand-sm {
+    background-color: #ffffff !important;
   }
-}
 
-.image-masthead {
-  .background-container {
-    filter: none;
-  }
-  .site-title-container {
-    min-height: 791px;
-    .site-title {
-      padding-top: 10rem;
-      color: #ffffff;
+  .image-masthead {
+    .background-container {
+      filter: none;
+    }
+    .site-title-container {
+      min-height: 791px;
+      .site-title {
+        padding-top: 10rem;
+        color: #ffffff;
 
-      .heading-1 {
-        font-weight: 600;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-      }
+        .heading-1 {
+          font-weight: 600;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+        }
 
-      .heading-2 {
-        font-weight: 600;
-        padding: 2rem;
-        text-transform: uppercase;
-      }
+        .heading-2 {
+          font-weight: 600;
+          padding: 2rem;
+          text-transform: uppercase;
+        }
 
-      .heading-3 {
-        font-weight: 600;
-        font-size: 1.5rem;
-        a {
-          color: #92c642;
+        .heading-3 {
+          font-weight: 600;
+          font-size: 1.5rem;
+          a {
+            color: #92c642;
+          }
         }
       }
     }
   }
-}
 
-.dashboard {
-  .search-box{
-    margin-top: 24px;
+  &.dashboard {
+    .search-box{
+      margin-top: 24px;
+    }
   }
 }
