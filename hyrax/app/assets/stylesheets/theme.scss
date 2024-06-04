@@ -20,10 +20,11 @@
   .site-title-container {
     min-height: 791px;
     .site-title {
-      padding-top: 155px;
+      padding-top: 10rem;
       color: #ffffff;
 
       .heading-1 {
+        font-weight: 600;
         font-size: 1.5rem;
         text-transform: uppercase;
       }
@@ -35,6 +36,7 @@
       }
 
       .heading-3 {
+        font-weight: 600;
         font-size: 1.5rem;
         a {
           color: #92c642;
