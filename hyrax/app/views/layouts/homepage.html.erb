@@ -1,0 +1,22 @@
+<% content_for(:navbar) do %>
+  <div class="image-masthead">
+    <div class="background-container" style="background-image: url('<%= image_path('banner.jpg') %>')"></div>
+    <span class="background-container-gradient"></span>
+
+    <div class="container site-title-container">
+      <div class="site-title">
+        <h3 class="heading-1">Comparing three institutional repository software platforms at OR2024</h3>
+        <h1 class="heading-2">Hyrax 5</h1>
+        <h3 class="heading-3">OR2024 Demo Instance by <%= link_to "Cottage Labs", "https://www.cottagelabs.com"%></h3>
+      </div>
+    </div>
+
+    <%= render '/controls' %>
+  </div>
+<% end %>
+
+<% content_for(:precontainer_content) do %>
+  <%= render 'hyrax/homepage/announcement' if controller_name == 'homepage' %>
+<% end %>
+
+<%= render template: 'layouts/hyrax' %>
