@@ -19,9 +19,28 @@
   }
   .site-title-container {
     min-height: 791px;
-  }
-  .background-container-gradient {
-    background: none;
+    .site-title {
+      padding-top: 155px;
+      color: #ffffff;
+
+      .heading-1 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+
+      .heading-2 {
+        font-weight: 600;
+        padding: 2rem;
+        text-transform: uppercase;
+      }
+
+      .heading-3 {
+        font-size: 1.5rem;
+        a {
+          color: #92c642;
+        }
+      }
+    }
   }
 }
 
