@@ -8,6 +8,18 @@
   }
 }
 
+.image-masthead {
+  .background-container {
+    filter: none;
+  }
+  .site-title-container {
+    min-height: 791px;
+  }
+  .background-container-gradient {
+    background: none;
+  }
+}
+
 .dashboard {
   .search-box{
     margin-top: 24px;
