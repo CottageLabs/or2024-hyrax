@@ -17,10 +17,6 @@ body {
     }
   }
 
-  .navbar.navbar-expand-sm {
-    background-color: #ffffff !important;
-  }
-
   .image-masthead {
     .background-container {
       filter: none;
@@ -55,8 +51,15 @@ body {
   }
 
   &.dashboard {
-    .search-box{
-      margin-top: 24px;
+    .navbar.navbar-expand-sm {
+      background-color: #ffffff !important;
+      position: relative;
+      top: 24px;
+    }
+  
+    #content-wrapper{
+      position: relative;
+      top: 24px;
     }
   }
 }
